@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://country-font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://country-label.gd" type="Script" id=3]
 [ext_resource path="res://main-2d-camera.gd" type="Script" id=4]
+[ext_resource path="res://quest-handler.gd" type="Script" id=5]
+[ext_resource path="res://deck-handler.gd" type="Script" id=6]
 
 [node name="Map" type="Node2D"]
 
@@ -47,31 +49,89 @@ script = ExtResource( 4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="QuestPanel" type="Panel" parent="CanvasLayer"]
+margin_left = 350.0
+margin_top = 176.0
+margin_right = 637.0
+margin_bottom = 392.0
+script = ExtResource( 5 )
+
+[node name="CardName" type="Label" parent="CanvasLayer/QuestPanel"]
+anchor_right = 1.0
+text = "Card Name"
+align = 1
+
+[node name="QuestTitle" type="Label" parent="CanvasLayer/QuestPanel"]
+margin_left = 9.0
+margin_top = 37.0
+margin_right = 76.0
+margin_bottom = 51.0
+text = "QuestTitle"
+
+[node name="QuestDescription" type="Label" parent="CanvasLayer/QuestPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 65.0
+margin_right = -10.0
+margin_bottom = -50.0
+text = "QuestDescription"
+autowrap = true
+
+[node name="Result" type="Label" parent="CanvasLayer/QuestPanel"]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="StartButton" type="Button" parent="CanvasLayer/QuestPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 151.0
+margin_top = 181.0
+text = "Start quest"
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/QuestPanel"]
+anchor_bottom = 1.0
+margin_top = 181.0
+margin_right = 148.0
+text = "Continue"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/QuestPanel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 25.0
+
+[node name="Timer" type="Timer" parent="CanvasLayer/QuestPanel"]
+one_shot = true
+
+[node name="DeckPanel" type="Panel" parent="CanvasLayer"]
 self_modulate = Color( 1, 1, 1, 0.509804 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -100.0
 
-[node name="DeckHolder" type="GridContainer" parent="CanvasLayer/Panel"]
+[node name="DeckHolder" type="GridContainer" parent="CanvasLayer/DeckPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 columns = 3
+script = ExtResource( 6 )
 
-[node name="Button" type="Button" parent="CanvasLayer/Panel/DeckHolder"]
+[node name="Button" type="Button" parent="CanvasLayer/DeckPanel/DeckHolder"]
+visible = false
 margin_right = 102.0
 margin_bottom = 20.0
 text = "Scientist Mary"
 
-[node name="Button2" type="Button" parent="CanvasLayer/Panel/DeckHolder"]
-margin_left = 106.0
-margin_right = 214.0
+[node name="Button2" type="Button" parent="CanvasLayer/DeckPanel/DeckHolder"]
+visible = false
+margin_right = 108.0
 margin_bottom = 20.0
 text = "Celebrity: Mark"
 
-[node name="Button3" type="Button" parent="CanvasLayer/Panel/DeckHolder"]
-margin_left = 218.0
-margin_right = 331.0
+[node name="Button3" type="Button" parent="CanvasLayer/DeckPanel/DeckHolder"]
+visible = false
+margin_right = 113.0
 margin_bottom = 20.0
 text = "Politician: Sarah"

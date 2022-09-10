@@ -1,0 +1,30 @@
+{
+	"cards": [
+		{
+			"id": 1,
+			"type": "Scientist",
+			"name": "Mary",
+		},
+		{
+			"id": 2,
+			"type": "Celebrity",
+			"name": "Mark",
+		},
+		{
+			"id": 3,
+			"type": "Politician",
+			"name": "Sarah",
+		},
+	],
+	"quests": [
+		{
+			"for_id": 1,
+			"type": "crop-level-up",
+			"name": "Cross-breeding",
+			"description": "You've been selected for a grant program in the USA to cross-breed corn. Maybe something could come of this?",
+			"success": "Success! Your new corn has 10% lower water usage.",
+			"failure": "What a waste! Your corn breed used 10% less water, but it lost its glyphosate resistance. In your shame, you loaded it all up in a biomass reactor and destroyed the evidence.",
+			"time": 1
+		}
+	],
+}
