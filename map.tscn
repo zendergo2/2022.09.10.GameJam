@@ -44,3 +44,33 @@ offset = Vector2( 0, 500 )
 current = true
 zoom = Vector2( 4, 4 )
 script = ExtResource( 4 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -100.0
+
+[node name="DeckHolder" type="GridContainer" parent="CanvasLayer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+columns = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel/DeckHolder"]
+margin_right = 102.0
+margin_bottom = 20.0
+text = "Scientist Mary"
+
+[node name="Button2" type="Button" parent="CanvasLayer/Panel/DeckHolder"]
+margin_left = 106.0
+margin_right = 214.0
+margin_bottom = 20.0
+text = "Celebrity: Mark"
+
+[node name="Button3" type="Button" parent="CanvasLayer/Panel/DeckHolder"]
+margin_left = 218.0
+margin_right = 331.0
+margin_bottom = 20.0
+text = "Politician: Sarah"
