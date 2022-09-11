@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://country-font.tres" type="DynamicFont" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://deck-handler.gd" type="Script" id=6]
 [ext_resource path="res://country-subtitle-font.tres" type="DynamicFont" id=7]
 [ext_resource path="res://state-machine.gd" type="Script" id=8]
+[ext_resource path="res://exit-game.gd" type="Script" id=9]
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 8 )
@@ -156,3 +157,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 columns = 3
 script = ExtResource( 6 )
+
+[node name="WonGame" type="Panel" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer/WonGame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 2 )
+text = "Congrats! You won the game!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="ExitGameButton" type="Button" parent="CanvasLayer/WonGame"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -50.0
+text = "EXIT GAME"
+script = ExtResource( 9 )

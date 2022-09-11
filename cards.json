@@ -35,11 +35,11 @@
 			"for_id": 1,
 			"type": "level-up",
 			"name": "Cross-breeding",
-			"location": "USA",
+			"location": "CANADA",
 			"required_level": 2,
-			"description": "You've been selected for a grant program in the USA to cross-breed corn. Maybe something could come of this?",
-			"success": "Success! Your new corn has 10% lower water usage.",
-			"failure": "What a waste! Your corn breed used 10% less water, but it lost its glyphosate resistance. In your shame, you loaded it all up in a biomass reactor and destroyed the evidence.",
+			"description": "Time to put your new corn into action! Solve Canada's food insecurity problem once and for all",
+			"success": "Success! You were able to introduce new, lower cost calories to many urban centers.",
+			"failure": "Oh no! Your trial farmers had a flood that wiped out half the growing season's crops. Your new corn was more expensive than the competition this year.",
 			"time": 1
 		},
 		{

@@ -20,6 +20,15 @@ func select_country(country):
 		else:
 			node.get_child(0).set("custom_colors/font_color", "#ffffff")
 
+func check_win_state():
+	for node in get_children():
+		if !(node is TileMap):
+			continue
+		if (node.get_child(0).reputation < 2 || node.get_child(0).insecurity > 0):
+			return false
+		
+	get_node("CanvasLayer/WonGame").set_visible(true)
+	return true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

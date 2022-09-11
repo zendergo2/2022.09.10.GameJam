@@ -21,16 +21,34 @@ func _ready():
 	cards = json.result['cards'];
 #	print("Cards: ", cards)
 
+	print_cards()
+
+func _card_pressed(card):
+	print("click ", card)
+	quest_panel.open_panel(card)
+
+func update_card(id, card):
+	var found_card
+	for c in cards:
+		if (c["id"] == id):
+			found_card = c
+			break
+	
+	if (found_card != null):
+		cards[cards.find(found_card)] = card
+	print_cards()
+
+func print_cards():
+	for node in get_children():
+		remove_child(node)
+		node.queue_free()
+	
 	for card in cards:
 		var card_button = Button.new()
-		card_button.set_text(str(card["type"], ": ", card["name"]))
+		card_button.set_text(str(card["type"], ": ", card["name"], " (Level: ", card["level"], ")"))
 		card_button.connect("pressed", self, "_card_pressed", [card])
 		add_child(card_button)
 		print("Adding card: ", card)
-
-func _card_pressed(card):
-	quest_panel.open_panel(card)
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

@@ -46,7 +46,8 @@ func open_panel(card):
 	for quest in quests:
 		if (
 			quest["for_id"] == active_card["id"] &&
-			quest["location"] == selected_country
+			quest["location"] == selected_country &&
+			card["level"] >= quest["required_level"]
 		):
 			active_quest = quest
 			break
@@ -77,7 +78,7 @@ func _process(delta):
 		quest_progress_bar.value = 100 - (timer.time_left / active_quest["time"]) * 100
 		if (quest_started == true && quest_progress_bar.value == 100):
 			quest_progress_bar.set_visible(false)
-			coin_flip = rng.randf() > 0.5;
+			coin_flip = rng.randf() > 0.15;
 			print("Win/loss: ", coin_flip)
 			if (coin_flip):
 				quest_description.text = active_quest["success"]
@@ -104,3 +105,5 @@ func level_up(quest, card):
 		elif card["type"] == "Celebrity":
 			country_node.add_reputation()
 	print("Leveled up card: ", card)
+	get_node("../DeckPanel/DeckHolder").update_card(card["id"], card)
+	get_node("/root/Map").check_win_state()
