@@ -1,5 +1,8 @@
 extends Label
 
+var reputation = 0
+var insecurity = 1
+
 func _ready():
 	var map = get_parent()
 #	print(map)
@@ -12,7 +15,27 @@ func _ready():
 		size.get_center().y * map.cell_size.y - (get_rect().size.y / 2))
 #	print("new_position", new_size)
 	set_position(new_size)
+	get_node("Reputation").text = str("Reputation: ", reputation)
+	get_node("Insecurity").text = str("Food Insecurity: ", insecurity)
 	#print(size.y)
+
+func add_reputation():
+	reputation += 1
+	get_node("Reputation").text = str("Reputation: ", reputation)
+	print("Reputation increased: ", get_text(), " | ", reputation)
+
+func remove_insecurity():
+	insecurity -= 1
+	get_node("Insecurity").text = str("Food Insecurity: ", insecurity)
+	print("Insecurity decreased: ", get_text(), " | ", insecurity)
+
+func _gui_input(event):
+	if event is InputEventMouse:
+		if event.is_pressed() and not event.is_echo():
+			var mouse_position = event.position
+
+			if event.button_index == BUTTON_LEFT:
+				get_node("/root/Map").select_country(get_parent().get_name())
 
 #func calculate_bounds(tilemap):
 #	var min_x = 0

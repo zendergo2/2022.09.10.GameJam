@@ -2,16 +2,19 @@
 	"cards": [
 		{
 			"id": 1,
+			"level": 1,
 			"type": "Scientist",
 			"name": "Mary",
 		},
 		{
 			"id": 2,
+			"level": 1,
 			"type": "Celebrity",
 			"name": "Mark",
 		},
 		{
 			"id": 3,
+			"level": 1,
 			"type": "Politician",
 			"name": "Sarah",
 		},
@@ -19,12 +22,47 @@
 	"quests": [
 		{
 			"for_id": 1,
-			"type": "crop-level-up",
+			"type": "level-up",
 			"name": "Cross-breeding",
+			"location": "USA",
+			"required_level": 1,
 			"description": "You've been selected for a grant program in the USA to cross-breed corn. Maybe something could come of this?",
 			"success": "Success! Your new corn has 10% lower water usage.",
 			"failure": "What a waste! Your corn breed used 10% less water, but it lost its glyphosate resistance. In your shame, you loaded it all up in a biomass reactor and destroyed the evidence.",
 			"time": 1
+		},
+		{
+			"for_id": 1,
+			"type": "level-up",
+			"name": "Cross-breeding",
+			"location": "USA",
+			"required_level": 2,
+			"description": "You've been selected for a grant program in the USA to cross-breed corn. Maybe something could come of this?",
+			"success": "Success! Your new corn has 10% lower water usage.",
+			"failure": "What a waste! Your corn breed used 10% less water, but it lost its glyphosate resistance. In your shame, you loaded it all up in a biomass reactor and destroyed the evidence.",
+			"time": 1
+		},
+		{
+			"for_id": 2,
+			"type": "level-up",
+			"name": "Press conference",
+			"location": "USA",
+			"required_level": 1,
+			"description": "Your conscience has grown heavy recently. You want to commandeer your next press conference in support of food security",
+			"success": "Success! People really seemed to connect with your message.",
+			"failure": "Failure! You really need to stop going to press conferences drunk.",
+			"time": 1
+		},
+		{
+			"for_id": 3,
+			"type": "level-up",
+			"name": "Local election",
+			"location": "CANADA",
+			"required_level": 1,
+			"description": "Your province is up for a special election! Put food on the table this year!",
+			"success": "Success! You are now Treasurer for the provincial school board. You are able to fund reduced cost school lunches.",
+			"failure": "Failure! If you want to keep running for office you need to stop disputing the election results.",
+			"time": 1
 		}
-	],
+	]
 }

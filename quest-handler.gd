@@ -18,6 +18,9 @@ onready var quest_description = get_node("QuestDescription")
 onready var start_button = get_node("StartButton")
 onready var close_button = get_node("CloseButton")
 
+onready var country_usa = get_node("../../USA/Name")
+onready var country_canada = get_node("../../CANADA/Name")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	rng.randomize()
@@ -38,14 +41,21 @@ func _ready():
 		close_button.set_visible(false)
 
 func open_panel(card):
+	active_card = card
+	var selected_country = get_node("/root/Map").selected_country
 	for quest in quests:
-		if (quest["for_id"] == card["id"]):
+		if (
+			quest["for_id"] == active_card["id"] &&
+			quest["location"] == selected_country
+		):
 			active_quest = quest
 			break
+	if (active_quest == null):
+		return
 	
 	set_visible(true)
 	print(active_quest)
-	get_node("CardName").text = str("For: ", card["name"])
+	get_node("CardName").text = str("For: ", active_card["name"])
 	get_node("QuestTitle").text = str("Quest: ", active_quest["name"])
 	quest_description.text = str(active_quest["description"])
 	start_button.connect("pressed", self, "_start_quest_pressed")
@@ -58,6 +68,9 @@ func _start_quest_pressed():
 	timer.start()
 	quest_started = true
 
+func _close_button_pressed():
+	set_visible(false)
+
 func _process(delta):
 	rng.randf() # fix getting same random number every time for some reason
 	if (active_quest != null):
@@ -68,8 +81,11 @@ func _process(delta):
 			print("Win/loss: ", coin_flip)
 			if (coin_flip):
 				quest_description.text = active_quest["success"]
+				level_up(active_quest, active_card)
 			else:
 				quest_description.text = active_quest["failure"]
+			
+			active_card = null
 			active_quest = null
 			quest_started = false
 			
@@ -77,5 +93,14 @@ func _process(delta):
 			close_button.set_visible(true)
 			close_button.connect("pressed", self, "_close_button_pressed")
 
-func _close_button_pressed():
-	set_visible(false)
+func level_up(quest, card):
+	if quest["type"] == "level-up":
+		card["level"] += 1
+		var country_node = get_node(str("/root/Map/", quest["location"], "/Name"))
+		if card["type"] == "Scientist":
+			country_node.remove_insecurity()
+		elif card["type"] == "Politician":
+			country_node.add_reputation()
+		elif card["type"] == "Celebrity":
+			country_node.add_reputation()
+	print("Leveled up card: ", card)
