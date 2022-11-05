@@ -7,6 +7,9 @@ extends Camera2D
 export var x_speed = 1_000;
 export var y_speed = 1_000;
 export var zoom_step = 1.1;
+var leftHeld = false;
+var heldMousePosStart = null;
+var heldViewportPosStart = null;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,6 +19,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pan_camera(delta)
+	if (leftHeld):
+		drag_camera(delta)
 	pass
 
 func pan_camera(delta):
@@ -38,9 +43,30 @@ func pan_camera(delta):
 	set_offset(get_offset() + camera_dir)
 	pass
 
+func drag_camera(delta):
+	# We want to put the mouse on top of where the hold was initiated
+	var currMousePos = get_viewport().get_mouse_position()
+	
+	# Viewport and Camera/Node2D vectors are in different coordinate spaces
+	# However, all we care about is how far relatively the mouse has moved since mouse was held
+	# The coordinate systems are mapped to each other by the zoom level of the viewport
+	# since they are held on the same object (MainCamera)
+	var target_offset = (heldMousePosStart - currMousePos) * get_zoom()
+	set_offset(heldViewportPosStart + target_offset)
+	
+	pass
+
 # https://godotengine.org/qa/25983/camera2d-zoom-position-towards-the-mouse?show=26109#a26109
 func _input(event):
-	if event is InputEventMouse:
+
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT:
+			leftHeld = event.is_pressed()
+			if (leftHeld):
+				heldMousePosStart = get_viewport().get_mouse_position()
+				heldViewportPosStart = get_offset()
+			else:
+				heldMousePosStart = null
 		if event.is_pressed() and not event.is_echo():
 			var mouse_position = event.position
 
