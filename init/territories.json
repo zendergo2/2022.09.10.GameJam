@@ -1,0 +1,86 @@
+{
+    "continents": [
+        {
+            "id": 1,
+            "name": "Europe"
+        },
+        {
+            "id": 2,
+            "name": "South America"
+        },
+        {
+            "id": 3,
+            "name": "Africa"
+        },
+        {
+            "id": 4,
+            "name": "Asia"
+        },
+        {
+            "id": 5,
+            "name": "Australia"
+        },
+        {
+            "id": 6,
+            "name": "North America"
+        }
+    ],
+    "territories": [
+        {
+            "continent_id": 1,
+            "name": "Wangen im Allgäu"
+        },
+        {
+            "continent_id": 2,
+            "name": "Cusco"
+        },
+        {
+            "continent_id": 2,
+            "name": "Sacsayhuaman"
+        },
+        {
+            "continent_id": 2,
+            "name": "Ollantaytambo"
+        },
+        {
+            "continent_id": 2,
+            "name": "Machu Picchu"
+        },
+        {
+            "continent_id": 3,
+            "name": "Rau"
+        },
+        {
+            "continent_id": 3,
+            "name": "Moshi"
+        },
+        {
+            "continent_id": 3,
+            "name": "Lunguo"
+        },
+        {
+            "continent_id": 3,
+            "name": "Chagga"
+        },
+        {
+            "continent_id": 3,
+            "name": "Maasai"
+        },
+        {
+            "continent_id": 4,
+            "name": "Dalian"
+        },
+        {
+            "continent_id": 5,
+            "name": "Gold Coast"
+        },
+        {
+            "continent_id": 6,
+            "name": "Twillingate"
+        },
+        {
+            "continent_id": 6,
+            "name": "Valladolid"
+        }
+    ]
+}
