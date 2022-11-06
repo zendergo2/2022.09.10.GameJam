@@ -12,7 +12,7 @@ func _ready():
 	quest_panel = get_node("../../QuestPanel")
 	print(quest_panel)
 	var data = File.new();
-	data.open("res://cards.json", File.READ)
+	data.open("res://init/cards.json", File.READ)
 
 	var json = JSON.parse(data.get_as_text())
 	if (!typeof(json.result) == TYPE_DICTIONARY):

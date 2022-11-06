@@ -25,7 +25,7 @@ onready var country_canada = get_node("../../CANADA/Name")
 func _ready():
 	rng.randomize()
 	var data = File.new();
-	data.open("res://cards.json", File.READ)
+	data.open("res://init/cards.json", File.READ)
 
 	var json = JSON.parse(data.get_as_text())
 	if (!typeof(json.result) == TYPE_DICTIONARY):
